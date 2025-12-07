@@ -104,7 +104,7 @@ public class BedWarsPlugin extends JavaPlugin implements Listener, TabExecutor {
         instance = this;
         this.saveDefaultConfig();
         // Sprawdzenie aktualizacji automatycznie
-        AutoUpdater updater = new AutoUpdater(this, "deyvsonpolish-pl", "BedWars", "BedWarsPlugin.jar");
+        AutoUpdater updater = new AutoUpdater(this, "deyvsonpolish-pl", "BedWarsPlugin", "BedWarsPlugin.jar");
         updater.checkAndUpdate();
         this.removeOldNPCs();
         this.npcManager = new NPCManager(this);
