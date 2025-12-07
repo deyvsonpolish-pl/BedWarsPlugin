@@ -22,13 +22,12 @@ jobs:
       - name: Build with Maven
         run: mvn clean package -DskipTests
 
-      - name: List files in target
-        run: ls -la target   # sprawdź, jak nazywa się JAR
+      - name: Rename JAR
+        run: mv target/bedwarsplugin-*.jar target/BedWarsPlugin.jar
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          # Wstaw tutaj dokładną nazwę pliku JAR po buildzie
-          files: target/bedwarsplugin-1.jar
+          files: target/BedWarsPlugin.jar
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
