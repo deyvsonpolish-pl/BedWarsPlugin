@@ -28,12 +28,10 @@ public class AutoUpdater {
         this.fileName = fileName;
         this.versionFile = new File(plugin.getDataFolder(), "version.txt");
 
-        // Tworzymy folder pluginu jeśli nie istnieje
         if (!plugin.getDataFolder().exists()) {
             plugin.getDataFolder().mkdirs();
         }
 
-        // Tworzymy plik wersji jeśli nie istnieje
         if (!versionFile.exists()) {
             try (FileWriter writer = new FileWriter(versionFile)) {
                 writer.write(plugin.getDescription().getVersion());
@@ -45,13 +43,27 @@ public class AutoUpdater {
 
     public void checkAndUpdate() {
         Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
+            HttpURLConnection connection = null;
             try {
                 URL url = new URL("https://api.github.com/repos/" + repoOwner + "/" + repoName + "/releases/latest");
-                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection = (HttpURLConnection) url.openConnection();
                 connection.setRequestProperty("User-Agent", "Mozilla/5.0");
+                connection.setRequestProperty("Accept", "application/vnd.github.v3+json");
                 connection.connect();
 
-                JsonObject json = JsonParser.parseReader(new InputStreamReader(connection.getInputStream())).getAsJsonObject();
+                int responseCode = connection.getResponseCode();
+                if (responseCode != 200) {
+                    plugin.getLogger().warning("Nie udało się połączyć z GitHub API. Kod odpowiedzi: " + responseCode);
+                    try (BufferedReader errorReader = new BufferedReader(new InputStreamReader(connection.getErrorStream(), StandardCharsets.UTF_8))) {
+                        String line;
+                        while ((line = errorReader.readLine()) != null) {
+                            plugin.getLogger().warning(line);
+                        }
+                    } catch (Exception ignored) {}
+                    return;
+                }
+
+                JsonObject json = JsonParser.parseReader(new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8)).getAsJsonObject();
                 String latestVersion = json.get("tag_name").getAsString();
 
                 JsonArray assets = json.getAsJsonArray("assets");
@@ -69,19 +81,10 @@ public class AutoUpdater {
                     return;
                 }
 
-                // Odczyt lokalnej wersji
                 String localVersion = readLocalVersion();
                 if (!latestVersion.equals(localVersion)) {
                     plugin.getLogger().info("Dostępna nowa wersja: " + latestVersion);
-
-                    for (Player player : Bukkit.getOnlinePlayers()) {
-                        TextComponent message = new TextComponent(
-                                "Nowa wersja BedWarsPlugin (" + latestVersion + ") dostępna! Kliknij tutaj, aby pobrać."
-                        );
-                        message.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/bedwars update"));
-                        player.spigot().sendMessage(message);
-                    }
-
+                    notifyPlayers(latestVersion);
                     downloadUpdate(downloadUrl, latestVersion);
                 } else {
                     plugin.getLogger().info("Posiadasz najnowszą wersję BedWarsPlugin.");
@@ -89,8 +92,22 @@ public class AutoUpdater {
 
             } catch (Exception e) {
                 plugin.getLogger().warning("Nie udało się sprawdzić aktualizacji: " + e.getMessage());
+            } finally {
+                if (connection != null) {
+                    connection.disconnect();
+                }
             }
         });
+    }
+
+    private void notifyPlayers(String latestVersion) {
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            TextComponent message = new TextComponent(
+                    "Nowa wersja BedWarsPlugin (" + latestVersion + ") dostępna! Kliknij tutaj, aby pobrać."
+            );
+            message.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/bedwars update"));
+            player.spigot().sendMessage(message);
+        }
     }
 
     private String readLocalVersion() {

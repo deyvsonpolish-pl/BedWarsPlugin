@@ -104,8 +104,6 @@ public class BedWarsPlugin extends JavaPlugin implements Listener, TabExecutor {
         instance = this;
         this.saveDefaultConfig();
         // Sprawdzenie aktualizacji automatycznie
-        AutoUpdater updater = new AutoUpdater(this, "deyvsonpolish-pl", "BedWarsPlugin", "BedWarsPlugin.jar");
-        updater.checkAndUpdate();
         this.removeOldNPCs();
         this.npcManager = new NPCManager(this);
         this.mapRegionTool = new MapRegionTool(this);
@@ -139,6 +137,8 @@ public class BedWarsPlugin extends JavaPlugin implements Listener, TabExecutor {
         Bukkit.getScheduler().runTaskLater(this, () -> this.npcManager.loadNPC(), 20L);
         this.generatorDruzyny.start();
         this.getLogger().info("BedWarsPlugin enabled.");
+        AutoUpdater updater = new AutoUpdater(this, "deyvsonpolish-pl", "BedWarsPlugin", "BedWarsPlugin.jar");
+        updater.checkAndUpdate();
     }
 
     public void onDisable() {
@@ -165,7 +165,7 @@ public class BedWarsPlugin extends JavaPlugin implements Listener, TabExecutor {
         }
 
         this.removeOldNPCs();
-        this.getLogger().info("BedWarsPlugin disabled.");
+        this.getLogger().info("BedWarsPlugin disabledd.");
     }
 
     private void removeOldNPCs() {
