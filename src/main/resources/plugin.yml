@@ -1,0 +1,8 @@
+name: BedWarsPlugin
+version: '1'
+main: org.BedWars.BedWarsPlugin
+api-version: '1.20'
+commands:
+  bedwars:
+    description: BedWars admin commands
+    usage: /bedwars
