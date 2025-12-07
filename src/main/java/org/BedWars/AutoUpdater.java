@@ -18,16 +18,16 @@ public class AutoUpdater {
     private final BedWarsPlugin plugin;
     private final String repoOwner;
     private final String repoName;
-    private final String fileName; // np. "BedWarsPlugin.jar"
+    private final String fileName; // nie przypisujemy tutaj wartości
     private final File versionFile;
 
     public AutoUpdater(BedWarsPlugin plugin, String repoOwner, String repoName, String fileName) {
         this.plugin = plugin;
         this.repoOwner = repoOwner;
         this.repoName = repoName;
-        this.fileName = fileName;
+        this.fileName = fileName; // OK, przypisujemy tylko raz w konstruktorze
         this.versionFile = new File(plugin.getDataFolder(), "version.txt");
-
+    
         if (!plugin.getDataFolder().exists()) {
             plugin.getDataFolder().mkdirs();
         }
