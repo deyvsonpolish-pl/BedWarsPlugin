@@ -1,0 +1,37 @@
+name: Build & Release BedWarsPlugin
+
+# Wyzwalacze workflow
+on:
+  push:
+    branches: [ "master" ]  # buduj przy pushu do master
+    tags:
+      - "v*"               # release twórz tylko przy tagach zaczynających się od v
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Pobranie kodu z repo
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2️⃣ Ustawienie JDK 17
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      # 3️⃣ Budowa projektu Mavenem
+      - name: Build with Maven
+        run: mvn clean package -DskipTests
+
+      # 4️⃣ Utworzenie release tylko jeśli push to tag (v*)
+      - name: Create GitHub Release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: target/*.jar      # Twój plik JAR, wynik builda Maven
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
