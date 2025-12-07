@@ -15,7 +15,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 public class GeneratorDruzyny {
     private final BedWarsPlugin plugin;
     private final Map<String, Location> teamGeneratorLocations = new HashMap();
-    private final int ironCooldown = 1001;
+    private final int ironCooldown = 100;
     private final int goldCooldown = 200;
     private final Map<String, Integer> ironCounters = new HashMap();
     private final Map<String, Integer> goldCounters = new HashMap();
