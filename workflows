@@ -1,0 +1,39 @@
+name: Build and Release BedWarsPlugin
+
+on:
+  push:
+    tags:
+      - 'v*'   # uruchamia workflow przy pushu tagu w formacie v1.0, v1.1 itd.
+  workflow_dispatch: # pozwala uruchomić ręcznie z GitHub Actions
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Build with Maven
+        run: mvn clean package
+
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ github.ref_name }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload plugin JAR to release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: target/bedwarsplugin-1.jar
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
