@@ -1,10 +1,10 @@
-name: Build and Release BedWarsPlugin
+name: Build & Release BedWarsPlugin
 
 on:
   push:
+    branches: [ "master" ]
     tags:
-      - 'v*'   # uruchamia workflow przy pushu tagu w formacie v1.0, v1.1 itd.
-  workflow_dispatch: # pozwala uruchomić ręcznie z GitHub Actions
+      - "v*"
 
 jobs:
   build:
@@ -12,28 +12,22 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Set up Java
-        uses: actions/setup-java@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
         with:
-          distribution: 'temurin'
-          java-version: '17'
+          distribution: temurin
+          java-version: 17
 
       - name: Build with Maven
-        run: mvn clean package
+        run: mvn clean package -DskipTests
 
-      - name: Create Release
-        id: create_release
-        uses: softprops/action-gh-release@v1
+      # Ten krok jest wykonywany tylko jeśli push to tag
+      - name: Create GitHub Release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ github.ref_name }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Upload plugin JAR to release
-        uses: softprops/action-gh-release@v1
-        with:
-          files: target/bedwarsplugin-1.jar
+          files: target/*.jar
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
