@@ -3,7 +3,7 @@ name: Build & Release BedWarsPlugin
 on:
   push:
     tags:
-      - 'v*'
+      - 'v*'  # każda nowa wersja np. v3.42
 
 jobs:
   build:
@@ -22,12 +22,15 @@ jobs:
       - name: Build plugin
         run: mvn clean package -Drevision=${GITHUB_REF_NAME} -DskipTests
 
+      - name: Rename JAR to match tag
+        run: mv target/BedWarsPlugin-0.0.0.jar target/BedWarsPlugin-${GITHUB_REF_NAME}.jar
+
       - name: Show target folder
         run: ls -la target/
 
       - name: Release plugin
         uses: softprops/action-gh-release@v2
         with:
-          files: target/*.jar
+          files: target/BedWarsPlugin-${GITHUB_REF_NAME}.jar
         env:
           GITHUB_TOKEN: ${{ secrets.BEDWARS_TOKEN }}
