@@ -1,5 +1,5 @@
 name: BedWarsPlugin
-version: '2.33'
+version: '3.40'
 main: org.BedWars.BedWarsPlugin
 api-version: '1.20'
 commands:
