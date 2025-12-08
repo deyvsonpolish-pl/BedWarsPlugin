@@ -3,7 +3,7 @@ name: Build & Release BedWarsPlugin
 on:
   push:
     tags:
-      - "v*"
+      - 'v*'
 
 jobs:
   build:
@@ -16,18 +16,18 @@ jobs:
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
+          java-version: '17'
           distribution: temurin
-          java-version: 17
 
-      - name: Build with Maven
-        run: mvn clean package -DskipTests
+      - name: Build plugin
+        run: mvn clean package -Drevision=${GITHUB_REF_NAME} -DskipTests
 
-      - name: Rename JAR
-        run: mv target/bedwarsplugin-*.jar target/BedWarsPlugin.jar
+      - name: Show target folder
+        run: ls -la target/
 
-      - name: Create GitHub Release
+      - name: Release plugin
         uses: softprops/action-gh-release@v2
         with:
-          files: target/BedWarsPlugin.jar
+          files: target/*.jar
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
