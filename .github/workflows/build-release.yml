@@ -1,0 +1,33 @@
+name: Build & Release BedWarsPlugin
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: temurin
+
+      - name: Build plugin
+        run: mvn clean package -Drevision=${GITHUB_REF_NAME} -DskipTests
+
+      - name: Show target folder
+        run: ls -la target/
+
+      - name: Release plugin
+        uses: softprops/action-gh-release@v2
+        with:
+          files: target/*.jar
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
