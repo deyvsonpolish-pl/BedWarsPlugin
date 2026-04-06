@@ -209,8 +209,14 @@ public class AutoUpdater {
                 plugin.getLogger().warning("Nie udało się podmienić pliku: " + e.getMessage());
             }
 
-            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "plugman reload " + pluginName);
+// anuluj taski
+            Bukkit.getScheduler().cancelTasks(plugin);
 
+// delay + reload
+            Bukkit.getScheduler().runTaskLater(plugin, () -> {
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(),
+                        "plugman reload " + plugin.getDescription().getName());
+            }, 40L);
             writeLocalVersion(lastDownloadedVersion);
 
             plugin.getLogger().info("Plugin został zaktualizowany!");
