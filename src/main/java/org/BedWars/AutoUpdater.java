@@ -209,7 +209,7 @@ public class AutoUpdater {
                 plugin.getLogger().warning("Nie udało się podmienić pliku: " + e.getMessage());
             }
 
-            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "plugman enable " + pluginName);
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "plugman reload " + pluginName);
 
             writeLocalVersion(lastDownloadedVersion);
 
