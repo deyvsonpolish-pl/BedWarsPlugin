@@ -1,20 +1,19 @@
 @echo off
+title BedWars Auto Release
 
-set /p version=Podaj wersje (np. 1.0.1): 
+call mvn clean package -U
 
-echo 🔨 Budowanie...
-mvn clean package
-
-echo 📦 Commit...
 git add .
-git commit -m "Release v%version%"
+git commit -m "auto release"
+git push -f
 
-echo 🏷️ Tag...
-git tag v%version%
+set /p version=Podaj wersje (np. v1.0.0):
 
-echo 🚀 Push...
-git push origin master
-git push origin v%version%
+git tag -d %version% 2>nul
+git push origin :refs/tags/%version% 2>nul
 
-echo ✅ GOTOWE! Release sie robi na GitHubie
+git tag %version%
+git push origin %version%
+
+echo DONE 🔥
 pause

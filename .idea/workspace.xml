@@ -5,38 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eebe2d84-e787-4e9e-9098-805effc5e01e" name="Changes" comment="Plugin">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Nowy Archiwum WinRARa (ZIP).zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/reg.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/release.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/release.bat (2).txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/release.bat.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/BedWars/ArenaEnterListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/BedWars/ChatAndScoreboard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/BedWars/RankedHologramManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/BedWars/RankedSystem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/BedWars/SystemLobbyBWMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/BedWars/TabListaBW.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/BedWars/UpdateCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/BedWars/arena/ArenaMode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/BedWars/party/PartyHubItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/BedWars/party/PartySystem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/hologram.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/build-release.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/build-release.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/BedWars/AutoUpdater.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/BedWars/AutoUpdater.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/BedWars/BedWarsPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/BedWars/BedWarsPlugin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/BedWars/GeneratorDruzyny.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/BedWars/GeneratorDruzyny.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/BedWars/GeneratorMapy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/BedWars/GeneratorMapy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/BedWars/MapRegionTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/BedWars/MapRegionTool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/BedWars/MapResetManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/BedWars/MapResetManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/BedWars/NPCManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/BedWars/NPCManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/BedWars/SklepDruzyn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/BedWars/SklepDruzyn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/version.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/workflows" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
