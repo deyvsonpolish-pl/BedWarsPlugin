@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eebe2d84-e787-4e9e-9098-805effc5e01e" name="Changes" comment="Plugin">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/version.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/workflows" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reg.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/release.bat (2).txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/release.bat.txt" beforeDir="false" afterPath="$PROJECT_DIR$/release.bat.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
