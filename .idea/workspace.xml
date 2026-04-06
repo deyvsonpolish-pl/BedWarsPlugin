@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eebe2d84-e787-4e9e-9098-805effc5e01e" name="Changes" comment="Plugin">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/BedWars/AutoUpdater.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/BedWars/AutoUpdater.java" afterDir="false" />
-    </list>
+    <list default="true" id="eebe2d84-e787-4e9e-9098-805effc5e01e" name="Changes" comment="Plugin" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
