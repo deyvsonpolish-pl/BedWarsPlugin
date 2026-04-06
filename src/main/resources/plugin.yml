@@ -1,8 +1,19 @@
 name: BedWarsPlugin
-version: '3.40'
+version: '22'
 main: org.BedWars.BedWarsPlugin
 api-version: '1.20'
 commands:
   bedwars:
     description: BedWars admin commands
     usage: /bedwars
+  bwrank:
+    description: Zarządzanie rangami BedWars
+  bwpoints:
+    description: Pokazuje punkty i rangę
+  bwholo:
+    description: BedWars Ranked hologram
+    usage: /bwholo
+    permission: bedwars.admin
+  bwupdate:
+    usage: /bwupdate
+    permission: bedwars.admin

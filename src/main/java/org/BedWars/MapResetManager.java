@@ -154,7 +154,12 @@ public class MapResetManager {
             }).runTaskTimer(this.plugin, 0L, 1L);
         }
     }
-
+    public void stopAll() {
+        // Jeśli używasz BukkitRunnable dla odbudowy, musisz je przechowywać w liście
+        // i tu je anulować. Poniżej przykład uproszczony:
+        // Jeżeli nie masz listy aktywnych runnable, metoda może być pusta lub logować info.
+        Bukkit.getScheduler().cancelTasks(this.plugin);
+    }
     public void restoreChangedBlocks(String arenaName) {
         File mapFile = new File(this.plugin.getDataFolder(), "maps/" + arenaName + ".map");
         if (!mapFile.exists()) {

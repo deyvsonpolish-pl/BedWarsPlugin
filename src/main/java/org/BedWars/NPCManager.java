@@ -80,6 +80,16 @@ public class NPCManager implements Listener {
             }
         }
     }
+    public void removeAllNPCs() {
+        if (npcLocation == null) return;
+
+        for (Entity e : npcLocation.getWorld().getEntities()) {
+            if (e.hasMetadata("arenaNPC")) {
+                e.remove();
+            }
+        }
+        npcLocation = null;
+    }
 
     @EventHandler
     public void onNPCLeftClick(EntityDamageByEntityEvent e) {
